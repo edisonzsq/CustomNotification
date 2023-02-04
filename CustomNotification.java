@@ -1,56 +1,69 @@
-import java.util.Date;
+public class CustomNotification {
+ 
+    public static boolean isOperating = true;
 
-public class CustomNotification{
-
-    static boolean isOperating = true;
-    public static enum NotificationType {
-        SMS,
-        EMAIL
+    /*
+     * Use of enum to:
+     *  - restrict option
+     *  - standardize value
+     */
+    public static enum Channel {
+        SMS, EMAIL
     }
 
-    String content;
-    String to;
-    Date timestamp;
-    NotificationType type;
+    Channel type;
 
-    public CustomNotification(String to, String content, NotificationType type){
+    // By default, private.
+    String to;
+    String content;
+    
+    // default
+    public CustomNotification(){
+
+    }
+
+    // with values initialization
+    public CustomNotification(String to, String content, Channel type){
         this.to = to;
         this.content = content;
         this.type = type;
     }
 
-    public void send(){
-        System.out.println("Sent '"+this.content+"' to "+this.to+" via "+this.type);
+    // Getter and Setter
+    public String getTo() {
+        return to;
+    }
+    public void setTo(String to) {        
+        this.to = to;
     }
 
-    public void send(String cc){
-        System.out.println("Sent '"+this.content+"' to "+this.to+" via "+this.type+" cc: "+cc);
-    }
-
+    /*
+     * public - accessible outside of this class
+     * private - accessible within this class
+     * protected - accessible within and child of this class
+     * 
+     * 
+     */
     public String getContent() {
         return content;
     }
     public void setContent(String content) {
         this.content = content;
     }
-    public String getTo() {
-        return to;
-    }
-    public void setTo(String to) {
-        this.to = to;
-    }
-    public Date getTimestamp() {
-        return timestamp;
-    }
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+
+    public void send(){
+
+        if(!CustomNotification.isOperating){
+            System.out.println("Notification is not operating at the moment");
+            return; // do not process anything below this line
+        }
+
+        System.out.println("Sent '"+this.content+"' to "+this.to+" via "+this.type);
     }
 
-    public static void setOperating(boolean isOperating){
-        CustomNotification.isOperating = isOperating;
-    }
-
-    public static boolean getOperating(){
-        return isOperating;
+    // method overloading
+    public void send(Channel type){
+        this.type = type;
+        this.send();
     }
 }
