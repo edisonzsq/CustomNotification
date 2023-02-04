@@ -2,6 +2,7 @@ import java.util.Date;
 
 public class CustomNotification{
 
+    static boolean isOperating = true;
     public static enum NotificationType {
         SMS,
         EMAIL
@@ -45,5 +46,11 @@ public class CustomNotification{
         this.timestamp = timestamp;
     }
 
+    public static void setOperating(boolean isOperating){
+        CustomNotification.isOperating = isOperating;
+    }
 
+    public static boolean getOperating(){
+        return isOperating;
+    }
 }
