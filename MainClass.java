@@ -1,16 +1,16 @@
-public class MainClass{
-    public static void main(String[] args){
 
-        // Default constructor
-        CustomNotification notification = new CustomNotification();
-        notification.setTo("+65 9739 8694");
-        notification.setContent("Good morning!");
-        notification.send(CustomNotification.Channel.SMS);
+public class MainClass {
+    public static void main(String[] args) {
 
-        // CustomNotification.isOperating = false; 
-
-        // Value initialization constructor
-        CustomNotification n2 = new CustomNotification("daniel@mail.com", "Good afternoon!", CustomNotification.Channel.EMAIL);
+        CustomNotification n1 = new SMSNotification("+65 9123 4567", "Good morning!");
+        n1.send();
+        System.out.println("=========================================================");
+        CustomNotification n2 = new EmailNotification("edison@mail.com", "Good afternoon!");
         n2.send();
-    }  
+
+        System.out.println("=========================================================");
+        AppAuditLogSender sender = new AppAuditLogSender();
+        sender.checkHasNetworkConnection();
+
+    }
 }

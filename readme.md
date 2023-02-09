@@ -1,5 +1,34 @@
 # Java Lesson
 
+## Lesson Coverage (10 Feb 23, Fri)
+
+- Abstraction 
+- Polymorphism
+
+### Overview
+
+Polymorphism - The ability to take on more than one form. (using `interface`)
+Abstraction - Hide unnecessary details so that the consumer only interface with the necessities. (using `abstract class`)
+
+Interface is used to pre-determine the shape of multiple unrelated classes.
+Abstract class is used to enforce the shape of closely related classes.
+
+When you use interface, you think about `universal capability` and `type`.
+    
+- Universal Capability Examples
+    - Drivable? Connectable? Payable?
+- Type example
+    - The types of `Drivable` car: `SportsCar`, `FamilyCar`, etcs.
+
+When you use abstract class, you think about `inheritance`.
+- All children class must have __________
+
+In this lesson, we will:
+- Convert CustomNotification.java to an abstract class
+- Create a Connectable.java as an interface
+
+---
+
 ## Lesson Coverage (6 Feb 23, Mon)
 
 - Inheritance
@@ -15,6 +44,7 @@ In this lesson, we will:
 - Provide additional properties `cc` and `bcc` to the `EmailNotification` class.
 - We will also observe `encapsulation` in the same piece of code.
 
+---
 
 ## Lesson Coverage (4 Feb 23, Sat)
 

@@ -1,4 +1,4 @@
-public class SMSNotification extends CustomNotification{
+public class SMSNotification extends CustomNotification implements Connectable{
 
     // Constructor
     public SMSNotification(String to, String content){
@@ -6,25 +6,31 @@ public class SMSNotification extends CustomNotification{
          * The super keyword calls the parent's constructor
          */
         super(to, content);
+        this.init();
     }
 
     // Method overriding
+    @Override
     public void send(){
-        super.send(); // will call the send() method of parent
-        System.out.println("Sending the above message via SMS");
+        if(checkHasNetworkConnection()){
+            System.out.println("Sending SMS to "+this.to+" with message: "+this.content);
+        }else{
+            System.out.println("Unable to send SMS due to network error");
+        }        
+    }
+
+    @Override
+    public void init() {
+        System.out.println("Initialize all properties needed to connect to sms server.");
+    }
+
+    @Override
+    public boolean checkHasNetworkConnection() {
+        System.out.println("Check whether has network connection.");
+        boolean isSuccess = true;
+        if(isSuccess){
+            CustomNotification.isOperating = true;
+        }
+        return isSuccess;
     }
 }
-
-/*
- * Sent 'Good morning!' to +65 9739 8694
- * Sending via SMS
- */
-
-
-
-
- /*
-  * LG TV
-        Model A - 1a 5d 2d 3a 3d 5e dd
-        Model B - 1a 5d 2d 3a 3d 5e ee
-  */

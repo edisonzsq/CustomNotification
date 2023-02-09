@@ -1,49 +1,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomNotification {
+public abstract class CustomNotification implements Connectable {
  
-    public static boolean isOperating = true;
+    public static boolean isOperating = false;
 
     // By default, private.
     String to;
     String content;
-    List<String> histories;
     
-    // default
-    public CustomNotification(){
-
-    }
-
     // with values initialization
     public CustomNotification(String to, String content){
         this.to = to;
         this.content = content;
-        histories = new ArrayList<String>();
     }
 
-    private void addHistory(String content){
-        histories.add(content);
-    }
-
-    protected void printHistory(){
-
-        // lambda expression in java
-        histories.forEach(h -> {
-            System.out.println(h);
-        });
-    }
-
-    protected void send(){
-
-        if(!CustomNotification.isOperating){
-            System.out.println("Notification is not operating at the moment");
-            return; // do not process anything below this line
-        }
-
-        System.out.println("Sent '"+this.content+"' to "+this.to);
-        addHistory(this.content);
-    }
+    // this will enforce child class to implement send() method
+    abstract void send();
 
     // accessor methods
     public String getTo() {
