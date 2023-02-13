@@ -1,3 +1,7 @@
+package sg.edu.ntu.notification;
+
+import sg.edu.ntu.api.Connectable;
+
 public class SMSNotification extends CustomNotification implements Connectable{
 
     // Constructor

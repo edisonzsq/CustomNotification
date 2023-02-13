@@ -1,4 +1,8 @@
-public class EmailNotification extends CustomNotification{
+package sg.edu.ntu.notification;
+
+import sg.edu.ntu.api.Connectable;
+
+public class EmailNotification extends CustomNotification implements Connectable{
     public EmailNotification(String to, String content){
         super(to, content);
         this.init();

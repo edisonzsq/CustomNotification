@@ -1,5 +1,9 @@
+package sg.edu.ntu.notification;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import sg.edu.ntu.api.Connectable;
 
 public abstract class CustomNotification implements Connectable {
  
@@ -16,7 +20,7 @@ public abstract class CustomNotification implements Connectable {
     }
 
     // this will enforce child class to implement send() method
-    abstract void send();
+    public abstract void send();
 
     // accessor methods
     public String getTo() {
