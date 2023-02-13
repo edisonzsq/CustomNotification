@@ -1,5 +1,13 @@
 # Java Lesson
 
+## Lesson Coverage (13 Feb 23, Mon)
+
+- try-catch-finally
+- Custom Exception
+- Good practice to log exceptions
+
+Optional: CompletableFuture (1st part of next lesson)
+
 ## Lesson Coverage (10 Feb 23, Fri)
 
 - Abstraction 
