@@ -1,8 +1,7 @@
 package sg.edu.ntu;
 
-import org.apache.log4j.BasicConfigurator;  
-import org.apache.log4j.LogManager;  
-import org.apache.log4j.Logger;  
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import sg.edu.ntu.notification.CustomNotification;
 import sg.edu.ntu.notification.EmailNotification;
@@ -23,6 +22,8 @@ public class App
         System.out.println("=========================================================");
         CustomNotification n2 = new EmailNotification("edison@mail.com", "Good afternoon!");
         n2.send();
+
+        testLogger();
     }
 
     public static void testLogger(){

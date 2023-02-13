@@ -1,0 +1,5 @@
+2023-02-13 08:26:31.427 [main] DEBUG sg.edu.ntu.App - Debug message
+2023-02-13 08:26:31.428 [main] INFO  sg.edu.ntu.App - Info message
+2023-02-13 08:26:31.428 [main] WARN  sg.edu.ntu.App - Warning message
+2023-02-13 08:26:31.429 [main] ERROR sg.edu.ntu.App - Error message
+2023-02-13 08:26:31.429 [main] FATAL sg.edu.ntu.App - Fatal message
