@@ -2,7 +2,9 @@
 
 ## How to run the project
 
-Step 1: CD to the `notification_app` folder
+On your Terminal,
+
+Step 1: `cd` to the `notification_app` folder
 
 Step 2: Run `mvn clean package` 
 
