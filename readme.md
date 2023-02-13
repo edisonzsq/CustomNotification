@@ -1,5 +1,19 @@
 # Java Lesson
 
+## How to run the project
+
+Step 1: CD to the `notification_app` folder
+
+Step 2: Run `mvn clean package` 
+
+If you do not have mvn yet, run `sdk install maven`
+
+Step 3: Open the `App.java` file loated in `notification_app/src/main/java/sg/edu/ntu/App.java` 
+
+Step 4: Right-click anywhere on the code and select "Run Java"
+
+> If you do not want to see those ugly read lines falsely highlighting errors on you VS Code, you are to launch a new instance of VS Code opening the folder `notification_app`. This is a good practice for coding java application. Your IDE should always open the root directory of your project. 
+
 ## Lesson Coverage (13 Feb 23, Mon)
 
 - try-catch-finally
