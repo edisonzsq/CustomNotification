@@ -1,36 +1,43 @@
 package sg.edu.ntu;
 
+import java.util.Queue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import sg.edu.ntu.notification.CustomNotification;
 import sg.edu.ntu.notification.EmailNotification;
 import sg.edu.ntu.notification.SMSNotification;
+import sg.edu.ntu.queue.NotificationQueue;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
-    private static final Logger logger = LogManager.getLogger(App.class);
 
     public static void main( String[] args )
     {
-        CustomNotification n1 = new SMSNotification("+65 9123 4567", "Good morning!");
-        n1.send();
-        System.out.println("=========================================================");
-        CustomNotification n2 = new EmailNotification("edison@mail.com", "Good afternoon!");
-        n2.send();
+        Queue<CustomNotification> queue = NotificationQueue.getInstance();
 
-        testLogger();
+        // Insert five objects into the queue
+        for(int i=0 ; i<5 ; i++){
+            CustomNotification n = new EmailNotification("index:"+i+" email: Daniel@mail.com", "HELLO");
+            queue.add(n);
+        }
+        
+        System.out.println("Queue Size: "+queue.size());
+
+        // Declare a thread pool executor
+        ExecutorService executor = Executors.newFixedThreadPool(2); 
+
+        // Consume one thread to process one item in the queue
+        executor.submit(() -> {
+            CustomNotification toProcess = queue.poll(); // Take out one item, automatically reduce size by one
+            toProcess.send();
+            System.out.println("End Submit Queue Size: "+queue.size());
+        });
+       
+        // Main thread stops here
     }
 
-    public static void testLogger(){
-        logger.debug("Debug message");
-        logger.info("Info message");
-        logger.warn("Warning message");
-        logger.error("Error message");
-        logger.fatal("Fatal message");
-    }
 }
