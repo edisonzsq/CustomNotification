@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import sg.edu.ntu.notification.CustomNotification;
 import sg.edu.ntu.notification.EmailNotification;
-import sg.edu.ntu.notification.SMSNotification;
+import sg.edu.ntu.processor.QueueProcessor;
 import sg.edu.ntu.queue.NotificationQueue;
 
 public class App 
@@ -17,27 +17,24 @@ public class App
 
     public static void main( String[] args )
     {
+        System.out.println("=============================== FRESH START ===============================");
+        System.out.println("Main Thread: "+Thread.currentThread().getName());
         Queue<CustomNotification> queue = NotificationQueue.getInstance();
 
         // Insert five objects into the queue
-        for(int i=0 ; i<5 ; i++){
-            CustomNotification n = new EmailNotification("index:"+i+" email: Daniel@mail.com", "HELLO");
+        int queueSeederSize = 10;
+        for(int i=0 ; i<queueSeederSize ; i++){
+            CustomNotification n = new EmailNotification("index:"+i+" email: Daniel@mail.com", "I am content with index "+i);
             queue.add(n);
         }
         
-        System.out.println("Queue Size: "+queue.size());
-
-        // Declare a thread pool executor
-        ExecutorService executor = Executors.newFixedThreadPool(2); 
-
-        // Consume one thread to process one item in the queue
-        executor.submit(() -> {
-            CustomNotification toProcess = queue.poll(); // Take out one item, automatically reduce size by one
-            toProcess.send();
-            System.out.println("End Submit Queue Size: "+queue.size());
-        });
-       
-        // Main thread stops here
+        int threadPoolSize = 3;
+        QueueProcessor.init(threadPoolSize);
+        try {
+            QueueProcessor.start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
