@@ -12,7 +12,7 @@ If you do not have mvn yet, run `sdk install maven`
 
 Step 3: Open the `App.java` file loated in `notification_app/src/main/java/sg/edu/ntu/App.java` 
 
-Step 4: Right-click anywhere on the code and select "Run Java"
+Step 4: Right-click anywhere on the code and select "Run Java" (java bundle extensions for vscode is needed)
 
 > If you do not want to see those ugly read lines falsely highlighting errors on you VS Code, you are to launch a new instance of VS Code opening the folder `notification_app`. This is a good practice for coding java application. Your IDE should always open the root directory of your project. 
 
@@ -33,6 +33,36 @@ If learners are continuing from their old repository, go to [pom.xml](./notifica
 ```
 
 This tells maven to compile the class to Java 17 runtime, so that we can use `lambda expression` which a new feature from Java 8
+
+## Understanding Multithreading Environment
+
+1. Concurrency and Parallelism
+
+<img src="https://i.stack.imgur.com/V5sMZ.png" />
+
+From: https://i.stack.imgur.com/V5sMZ.png
+
+1. Processes and Threads
+
+A multiple core CPU can run computation on multiple processes. Each process will spawn threads. We do not write Java program to explicitly spawn new thread when we write multithreading code. The decision is on the CPU and OS.
+
+When you launch a MS Word, the program launched lives in a process (and underlying thread). When you launch the second MS Word, two instances of program is used and may live in the same thread concurrently. This does not mean two CPU core is utilized - as the decision is up to the CPU and OS.
+
+1. Five ways to spawn new thread in Java
+
+    a. Extends `Thread`
+
+    b. Implement `Runnable`
+
+    c. Using the `ExecutorService` class
+
+    d. Join/Fork 
+
+    e. `CompetableFuture`
+
+1. The preferred  Approach
+
+Before Java 8, option (b) and (c) is preferred. Since Java 8, (b) and (e).
 
 ## Lesson Coverage (13 Feb 23, Mon)
 
