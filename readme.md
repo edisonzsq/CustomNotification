@@ -16,6 +16,24 @@ Step 4: Right-click anywhere on the code and select "Run Java"
 
 > If you do not want to see those ugly read lines falsely highlighting errors on you VS Code, you are to launch a new instance of VS Code opening the folder `notification_app`. This is a good practice for coding java application. Your IDE should always open the root directory of your project. 
 
+## Lesson Coverage (17 Feb 23, Fri)
+
+- Spawn a new thread with `CompletableFuture`
+- Use a `Queue` to store `CustomNotification` objects in a `NotificationQueue` class
+- Implement `ExecutorService` on `App.js` to clear the objects stored in `Queue`
+
+If learners are continuing from their old repository, go to [pom.xml](./notification_app/pom.xml) to change the following:
+
+```xml
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source> <!-- Change the value from 1.7 to 17 -->
+    <maven.compiler.target>1.7</maven.compiler.target> <!-- Change the value from 1.7 to 17 -->
+  </properties>
+```
+
+This tells maven to compile the class to Java 17 runtime, so that we can use `lambda expression` which a new feature from Java 8
+
 ## Lesson Coverage (13 Feb 23, Mon)
 
 - try-catch-finally

@@ -1,8 +1,5 @@
 package sg.edu.ntu.notification;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import sg.edu.ntu.api.Connectable;
 
 public abstract class CustomNotification implements Connectable {

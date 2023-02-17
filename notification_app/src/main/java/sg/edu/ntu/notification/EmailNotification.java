@@ -10,10 +10,7 @@ public class EmailNotification extends CustomNotification implements Connectable
 
     @Override
     public void send(){
-        if(checkHasNetworkConnection())
-            System.out.println("Sending email to "+this.to+" with message: "+this.content);
-        else
-            System.out.println("Unable to send Email due to network error");
+        // Add code
     }
 
     @Override
